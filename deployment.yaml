@@ -17,7 +17,20 @@ spec:
       containers:
         - name: kuber-hw
           image: >-
-            docker.io/mvkoshenkova/kuberhw:latest
+            docker.io/mvkoshenkova/kuberhw:v2
           ports:
             - name: web
               containerPort: 8080
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 2
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /health
+            initialDelaySeconds: 10
+            periodSeconds: 5
