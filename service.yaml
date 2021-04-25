@@ -9,4 +9,5 @@ spec:
     - protocol: TCP
       port: 9000
       targetPort: web
+      nodePort: 32101
   type: LoadBalancer
